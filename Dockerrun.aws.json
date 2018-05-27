@@ -1,0 +1,44 @@
+{
+  "AWSEBDockerrunVersion": 2,
+  "containerDefinitions": [
+    {
+      "name": "rabbitmqserver",
+      "image": "yalimpop/rabbitmq-aws-elastic-beanstalk",
+      "essential": true,
+      "memory": 2500,
+      "portMappings": [
+        {
+          "hostPort": 5672,
+          "containerPort": 5672
+        },
+        {
+          "hostPort": 15672,
+          "containerPort": 15672
+        },
+        {
+          "hostPort": 25672,
+          "containerPort": 25672
+        },
+        {
+          "hostPort": 4369,
+          "containerPort": 4369
+        }
+      ]
+    },
+    {
+      "name": "nginx",
+      "image": "nginx",
+      "essential": true,
+      "memory": 256,
+      "portMappings": [
+        {
+          "hostPort": 80,
+          "containerPort": 80
+        }
+      ],
+      "links": [
+        "rabbitmqserver"
+      ]
+    }
+  ]
+}
