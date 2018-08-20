@@ -22,7 +22,11 @@
         {
           "hostPort": 4369,
           "containerPort": 4369
-        }
+        },
+        {
+          "hostPort": 15674,
+          "containerPort": 15674
+        }      
       ]
     },
     {
