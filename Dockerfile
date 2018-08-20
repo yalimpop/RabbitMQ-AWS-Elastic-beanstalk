@@ -5,6 +5,7 @@ ENV RABBITMQ_USE_LONGNAME=true
 ENV RABBITMQ_ERLANG_COOKIE='ReplaceMe'
 RUN rabbitmq-plugins enable --offline rabbitmq_management rabbitmq_peer_discovery_aws rabbitmq_web_stomp
 
+ADD enabled_plugins /etc/rabbitmq/enabled_plugins 
 ADD definitions.json /etc/rabbitmq/definitions.json
 ADD rabbitmq.conf /etc/rabbitmq/rabbitmq.conf
 ADD rabbitmq-env.conf /etc/rabbitmq/rabbitmq-env.conf
