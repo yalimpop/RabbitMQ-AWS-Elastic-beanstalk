@@ -1,14 +1,14 @@
-FROM bitnami/rabbitmq:latest
+FROM rabbitmq
 RUN apt-get update && apt-get install -y curl && \
     apt-get clean
 ENV RABBITMQ_USE_LONGNAME=true
 ENV RABBITMQ_ERLANG_COOKIE='Mimikyu'
-RUN rabbitmq-plugins enable --online rabbitmq_stomp
-RUN rabbitmq-plugins enable --online rabbitmq_web_stomp
+
 RUN rabbitmq-plugins enable --online rabbitmq_management
 RUN rabbitmq-plugins enable --online rabbitmq_peer_discovery_aws
+RUN rabbitmq-plugins enable --online rabbitmq_web_stomp
+RUN rabbitmq-plugins enable --online rabbitmq_web_mqtt
 
-ADD enabled_plugins /etc/rabbitmq/enabled_plugins 
 ADD definitions.json /etc/rabbitmq/definitions.json
 ADD rabbitmq.conf /etc/rabbitmq/rabbitmq.conf
 ADD rabbitmq-env.conf /etc/rabbitmq/rabbitmq-env.conf
