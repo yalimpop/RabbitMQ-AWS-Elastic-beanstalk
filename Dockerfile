@@ -1,4 +1,4 @@
-FROM rabbitmq:3.7.7
+FROM rabbitmq:latest
 RUN apt-get update && apt-get install -y curl && \
     apt-get clean
 ENV RABBITMQ_USE_LONGNAME=true
