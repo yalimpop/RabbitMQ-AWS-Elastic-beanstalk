@@ -15,81 +15,18 @@
       "name": "Bumblebee",
       "password": "Bumblebee",
       "tags": "administrator"
-    },
-    {
-      "name": "Bumblebee22000",
-      "password": "Bumblebee22000",
-      "tags": "administrator"
-    },
-    {
-      "name": "Bumblebee22001",
-      "password": "Bumblebee22001",
-      "tags": "administrator"
-    },
-    {
-      "name": "Bumblebee22002",
-      "password": "Bumblebee22002",
-      "tags": "administrator"
-    },
-    {
-      "name": "Bumblebee22003",
-      "password": "Bumblebee22003",
-      "tags": "administrator"
-    },
-    {
-      "name": "Bumblebee22004",
-      "password": "Bumblebee22004",
-      "tags": "administrator"
-    },
-    {
-      "name": "Bumblebee22005",
-      "password": "Bumblebee22005",
-      "tags": "administrator"
-    },
-    {
-      "name": "Bumblebee22006",
-      "password": "Bumblebee22006",
-      "tags": "administrator"
-    },
-    {
-      "name": "Bumblebee22007",
-      "password": "Bumblebee22007",
-      "tags": "administrator"
-    },
-    {
-      "name": "Bumblebee22008",
-      "password": "Bumblebee22008",
-      "tags": "administrator"
-    },
-    {
-      "name": "Bumblebee22009",
-      "password": "Bumblebee22009",
-      "tags": "administrator"
-    },
-    {
-      "name": "Bumblebee22010",
-      "password": "Bumblebee22010",
-      "tags": "administrator"
-    },
-    {
-      "name": "Bumblebee22011",
-      "password": "Bumblebee22011",
-      "tags": "administrator"
-    },
-    {
-      "name": "Bumblebee22012",
-      "password": "Bumblebee22012",
-      "tags": "administrator"
-    },
-    {
-      "name": "Bumblebee22013",
-      "password": "Bumblebee22013",
-      "tags": "administrator"
     }
   ],
   "permissions": [
         {
-            "user": "guest",
+            "user": "radmin",
+            "vhost": "/",
+            "configure": ".*",
+            "write": ".*",
+            "read": ".*"
+        },
+      {
+            "user": "Bumblebee",
             "vhost": "/",
             "configure": ".*",
             "write": ".*",
