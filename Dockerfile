@@ -4,8 +4,8 @@ RUN apt-get update && apt-get install -y curl && \
 ENV RABBITMQ_USE_LONGNAME=true
 ENV RABBITMQ_ERLANG_COOKIE='Mimikyu'
 
-RUN rabbitmq-plugins enable --online rabbitmq_management
-RUN rabbitmq-plugins enable --online rabbitmq_peer_discovery_aws
+RUN rabbitmq-plugins enable --offline rabbitmq_management
+RUN rabbitmq-plugins enable --offline rabbitmq_peer_discovery_aws
 RUN rabbitmq-plugins enable --online rabbitmq_web_stomp
 RUN rabbitmq-plugins enable --online rabbitmq_web_mqtt
 
