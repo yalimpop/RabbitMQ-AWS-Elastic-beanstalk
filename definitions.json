@@ -7,14 +7,26 @@
   ],
   "users": [
     {
-      "name": "guest",
-      "password": "guest",
+      "name": "radmin",
+      "password": "radmin",
+      "tags": "administrator"
+    },
+    {
+      "name": "Bumblebee",
+      "password": "Bumblebee",
       "tags": "administrator"
     }
   ],
   "permissions": [
         {
-            "user": "guest",
+            "user": "radmin",
+            "vhost": "/",
+            "configure": ".*",
+            "write": ".*",
+            "read": ".*"
+        },
+      {
+            "user": "Bumblebee",
             "vhost": "/",
             "configure": ".*",
             "write": ".*",
