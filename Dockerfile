@@ -6,6 +6,7 @@ ENV RABBITMQ_ERLANG_COOKIE='Mimikyu'
 
 RUN rabbitmq-plugins enable --offline rabbitmq_management rabbitmq_peer_discovery_aws rabbitmq_web_stomp rabbitmq_web_mqtt
 
+ADD enabled_plugins /etc/rabbitmq/enabled_plugins
 ADD definitions.json /etc/rabbitmq/definitions.json
 ADD rabbitmq.conf /etc/rabbitmq/rabbitmq.conf
 ADD rabbitmq-env.conf /etc/rabbitmq/rabbitmq-env.conf
