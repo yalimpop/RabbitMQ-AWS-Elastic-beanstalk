@@ -8,7 +8,6 @@ RUN rabbitmq-plugins enable rabbitmq_management
 RUN rabbitmq-plugins enable rabbitmq_peer_discovery_aws
 RUN rabbitmq-plugins enable rabbitmq_web_mqtt
 
-ADD enabled_plugins /etc/rabbitmq/enabled_plugins
 ADD definitions.json /etc/rabbitmq/definitions.json
 ADD rabbitmq.conf /etc/rabbitmq/rabbitmq.conf
 ADD rabbitmq-env.conf /etc/rabbitmq/rabbitmq-env.conf
