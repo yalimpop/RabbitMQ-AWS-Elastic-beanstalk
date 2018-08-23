@@ -13,4 +13,4 @@ ADD definitions.json /etc/rabbitmq/definitions.json
 ADD rabbitmq.conf /etc/rabbitmq/rabbitmq.conf
 ADD rabbitmq-env.conf /etc/rabbitmq/rabbitmq-env.conf
 
-EXPOSE 15672 5672 4369 25672 15674 15675
+EXPOSE 15672 5672 4369 25672 15675
