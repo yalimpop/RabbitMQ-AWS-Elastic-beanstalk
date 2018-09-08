@@ -1,6 +1,19 @@
 FROM rabbitmq
 RUN apt-get update && apt-get install -y curl && \
-    apt-get clean
+    apt-get clean && apt-get install unzip && \
+    apt-get install libwww-perl libdatetime-perl
+
+RUN curl https://aws-cloudwatch.s3.amazonaws.com/downloads/CloudWatchMonitoringScripts-1.2.2.zip -O && \
+    unzip CloudWatchMonitoringScripts-1.2.2.zip && \
+    rm CloudWatchMonitoringScripts-1.2.2.zip && \
+    cd aws-scripts-mon
+
+ADD awscreds.conf /aws-scripts-mon/awscreds.conf
+
+RUN ./mon-put-instance-data.pl --mem-util --verify --verbose
+
+RUN echo "*/1 * * * * ~/aws-scripts-mon/mon-put-instance-data.pl --mem-used-incl-cache-buff --mem-util --disk-space-util --disk-path=/ --from-cron" >> /etc/crontab
+
 ENV RABBITMQ_USE_LONGNAME=true
 ENV RABBITMQ_ERLANG_COOKIE='Mimikyu'
 
