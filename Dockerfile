@@ -1,7 +1,7 @@
 FROM rabbitmq
 RUN apt-get update && apt-get install -y curl && \
-    apt-get clean && apt-get install unzip && \
-    apt-get install libwww-perl libdatetime-perl
+    apt-get clean && apt-get install -y unzip && \
+    apt-get install -y libwww-perl libdatetime-perl
 
 RUN curl https://aws-cloudwatch.s3.amazonaws.com/downloads/CloudWatchMonitoringScripts-1.2.2.zip -O && \
     unzip CloudWatchMonitoringScripts-1.2.2.zip && \
@@ -10,9 +10,15 @@ RUN curl https://aws-cloudwatch.s3.amazonaws.com/downloads/CloudWatchMonitoringS
 
 RUN printf "AWSAccessKeyId=${AWS_ACCESS_KEY_ID}\nAWSSecretKey=${AWS_SECRET_KEY}" >> /aws-scripts-mon/awscreds.conf
 
-RUN ./mon-put-instance-data.pl --mem-util --verify --verbose
+RUN ls ./aws-scripts-mon
 
-RUN echo "*/1 * * * * ~/aws-scripts-mon/mon-put-instance-data.pl --mem-used-incl-cache-buff --mem-util --disk-space-util --disk-path=/ --from-cron" >> /etc/crontab
+RUN cat ./aws-scripts-mon/awscreds.conf
+
+RUN echo "1 * * * * ~/aws-scripts-mon/mon-put-instance-data.pl --mem-used-incl-cache-buff --mem-util --disk-space-util --disk-path=/ --from-cron" >> /etc/crontab
+
+RUN cat /etc/crontab
+
+RUN ./aws-scripts-mon/mon-put-instance-data.pl --mem-util --verify --verbose
 
 ENV RABBITMQ_USE_LONGNAME=true
 ENV RABBITMQ_ERLANG_COOKIE='Mimikyu'
