@@ -8,7 +8,7 @@ RUN curl https://aws-cloudwatch.s3.amazonaws.com/downloads/CloudWatchMonitoringS
     rm CloudWatchMonitoringScripts-1.2.2.zip && \
     cd aws-scripts-mon
 
-ADD awscreds.conf /aws-scripts-mon/awscreds.conf
+RUN printf "AWSAccessKeyId=${AWS_ACCESS_KEY_ID}\nAWSSecretKey=${AWS_SECRET_KEY}" >> /aws-scripts-mon/awscreds.conf
 
 RUN ./mon-put-instance-data.pl --mem-util --verify --verbose
 
