@@ -3,7 +3,7 @@
   "containerDefinitions": [
     {
       "name": "rabbitmqserver",
-      "image": "yalimpop/rabbitmq-aws-elastic-beanstalk",
+      "image": "optimusgps/rabbitmq",
       "essential": true,
       "memory": 2500,
       "portMappings": [
@@ -22,7 +22,11 @@
         {
           "hostPort": 4369,
           "containerPort": 4369
-        }
+        },
+        {
+          "hostPort": 15675,
+          "containerPort": 15675
+        }        
       ]
     },
     {
