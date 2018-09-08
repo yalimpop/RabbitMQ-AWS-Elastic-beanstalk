@@ -10,15 +10,15 @@ RUN curl https://aws-cloudwatch.s3.amazonaws.com/downloads/CloudWatchMonitoringS
 
 RUN printf "AWSAccessKeyId=${AWS_ACCESS_KEY_ID}\nAWSSecretKey=${AWS_SECRET_KEY}" >> /aws-scripts-mon/awscreds.conf
 
-RUN ls ./aws-scripts-mon
+#RUN ls ./aws-scripts-mon
 
-RUN cat ./aws-scripts-mon/awscreds.conf
+#RUN cat ./aws-scripts-mon/awscreds.conf
 
-RUN echo "1 * * * * ~/aws-scripts-mon/mon-put-instance-data.pl --mem-used-incl-cache-buff --mem-util --disk-space-util --disk-path=/ --from-cron" >> /etc/crontab
+RUN echo "1 * * * * ~/aws-scripts-mon/mon-put-instance-data.pl --mem-used-incl-cache-buff --mem-util --mem-used --mem-avail --disk-space-util --memory-units=megabytes --disk-path=/ --from-cron" >> /etc/crontab
 
-RUN cat /etc/crontab
+#RUN cat /etc/crontab
 
-RUN ./aws-scripts-mon/mon-put-instance-data.pl --mem-util --verify --verbose
+#RUN ./aws-scripts-mon/mon-put-instance-data.pl --mem-util --verify --verbose
 
 ENV RABBITMQ_USE_LONGNAME=true
 ENV RABBITMQ_ERLANG_COOKIE='Mimikyu'
